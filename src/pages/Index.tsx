@@ -255,7 +255,7 @@ const Index = () => {
       <section id="portfolio" className="py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Selected Works</h2>
+            <h2 className="text-4xl font-bold mb-4">My Works</h2>
             <p className="text-xl text-gray-300">Projects that showcase my passion for AI and development</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
