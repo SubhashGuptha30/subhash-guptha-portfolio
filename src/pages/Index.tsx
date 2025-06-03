@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { sendEmail, EmailData } from '@/services/emailService';
-
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -17,11 +16,10 @@ const Index = () => {
     subject: '',
     message: ''
   });
-
   useEffect(() => {
     setIsVisible(true);
     const handleScroll = () => {
-      const sections = ['home', 'about', 'portfolio', 'services', 'contact'];
+      const sections = ['home', 'about', 'portfolio', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -40,7 +38,6 @@ const Index = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -49,7 +46,6 @@ const Index = () => {
       });
     }
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -60,7 +56,6 @@ const Index = () => {
       [name]: value
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -102,7 +97,6 @@ const Index = () => {
       setIsSubmitting(false);
     }
   };
-
   const projects = [{
     title: "Movie Streaming Website",
     description: "Full-stack application built with React, Node.js, and MongoDB for seamless movie streaming experience",
@@ -124,8 +118,7 @@ const Index = () => {
     tech: ["Python", "NumPy", "Matplotlib", "Research"],
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop"
   }];
-
-  const services = [{
+  const skills = [{
     icon: <Code className="w-8 h-8" />,
     title: "Frontend Development",
     description: "Responsive web and mobile applications using React, Flutter, HTML, and CSS with focus on user experience"
@@ -142,7 +135,6 @@ const Index = () => {
     title: "Full-Stack Development",
     description: "End-to-end application development with modern technologies and best practices"
   }];
-
   return <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-800">
@@ -150,7 +142,7 @@ const Index = () => {
           <div className="flex justify-between items-center">
             <div className="text-xl font-bold text-cyan-400">Subhash.dev</div>
             <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Portfolio', 'Services', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
+              {['Home', 'About', 'Portfolio', 'Skills', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
                   {item}
                 </button>)}
             </div>
@@ -291,20 +283,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-800">
+      {/* Skills Section */}
+      <section id="skills" className="py-20 bg-gray-800">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Services</h2>
+            <h2 className="text-4xl font-bold mb-4">Skills</h2>
             <p className="text-xl text-gray-300">What I can do for you</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => <Card key={index} className="bg-gray-900 border-gray-700 text-center group hover:border-cyan-400 transition-all duration-300">
+            {skills.map((service, index) => <Card key={index} className="bg-gray-900 border-gray-700 text-center group hover:border-cyan-400 transition-all duration-300">
                 <CardHeader>
                   <div className="text-cyan-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
-                  <CardTitle className="text-lg">{service.title}</CardTitle>
+                  <CardTitle className="text-cyan-400">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300 text-sm">{service.description}</p>
@@ -379,5 +371,4 @@ const Index = () => {
       </footer>
     </div>;
 };
-
 export default Index;
