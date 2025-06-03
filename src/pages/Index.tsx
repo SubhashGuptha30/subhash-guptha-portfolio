@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ArrowRight, Github, Linkedin, Mail, Phone, ExternalLink, Code, Brain, Database, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,10 +5,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
+import { sendEmail, EmailData } from '@/services/emailService';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
   useEffect(() => {
     setIsVisible(true);
@@ -41,12 +48,59 @@ const Index = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    });
+    
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      toast({
+        title: "Please fill in all fields",
+        description: "All fields are required to send your message.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const emailData: EmailData = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      };
+
+      await sendEmail(emailData);
+      
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+
+      // Clear form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      toast({
+        title: "Failed to Send Message",
+        description: "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const projects = [
@@ -342,32 +396,53 @@ const Index = () => {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <Input 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder="Your Name" 
                     className="bg-gray-900 border-gray-600 text-white placeholder-gray-400"
                     required
+                    disabled={isSubmitting}
                   />
                   <Input 
+                    name="email"
                     type="email" 
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="Your Email" 
                     className="bg-gray-900 border-gray-600 text-white placeholder-gray-400"
                     required
+                    disabled={isSubmitting}
                   />
                   <Input 
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     placeholder="Subject" 
                     className="bg-gray-900 border-gray-600 text-white placeholder-gray-400"
                     required
+                    disabled={isSubmitting}
                   />
                   <Textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Tell me about your project..." 
                     rows={5}
                     className="bg-gray-900 border-gray-600 text-white placeholder-gray-400 resize-none"
                     required
+                    disabled={isSubmitting}
                   />
                   <Button 
                     type="submit" 
-                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-white transition-all duration-300 hover:scale-105"
+                    disabled={isSubmitting}
+                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-white transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    Send Message <ArrowRight className="ml-2 w-4 h-4" />
+                    {isSubmitting ? (
+                      <>Sending...</>
+                    ) : (
+                      <>Send Message <ArrowRight className="ml-2 w-4 h-4" /></>
+                    )}
                   </Button>
                 </form>
               </CardContent>
