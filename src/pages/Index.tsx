@@ -101,7 +101,7 @@ const Index = () => {
     title: "Movie Streaming Website",
     description: "Full-stack application built with React, Node.js, and MongoDB for seamless movie streaming experience",
     tech: ["React", "Node.js", "MongoDB", "Express"],
-    image: "https://images.unsplash.com/photo-1489599608888-ccbe4b334de6?w=600&h=400&fit=crop"
+    image: "https://i.postimg.cc/J4RCvfF9/image.png"
   }, {
     title: "Song Recommender AI",
     description: "Python-based AI system using collaborative filtering for personalized music recommendations",
