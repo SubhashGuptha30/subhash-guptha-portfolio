@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { sendEmail, EmailData } from '@/services/emailService';
+
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -101,22 +102,26 @@ const Index = () => {
     title: "Movie Streaming Website",
     description: "Full-stack application built with React, Node.js, and MongoDB for seamless movie streaming experience",
     tech: ["React", "Node.js", "MongoDB", "Express"],
-    image: "https://i.postimg.cc/J4RCvfF9/image.png"
+    image: "https://i.postimg.cc/J4RCvfF9/image.png",
+    link: "https://github.com/SubhashGuptha30/EntertainmentHUB"
   }, {
     title: "Song Recommender AI",
     description: "Python-based AI system using collaborative filtering for personalized music recommendations",
     tech: ["Python", "Scikit-learn", "Pandas", "Flask"],
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop"
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+    link: "https://github.com/SubhashGuptha30/SpotifyMiniProject"
   }, {
     title: "AI Nutrition Tracking System",
     description: "Computer vision-based food image analysis with personalized meal planning recommendations",
     tech: ["Python", "TensorFlow", "OpenCV", "React"],
-    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&h=400&fit=crop"
+    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&h=400&fit=crop",
+    link: null
   }, {
     title: "Quantum-Inspired Grey Wolf Optimization",
     description: "Hybrid machine learning algorithm for feature selection optimization research project",
     tech: ["Python", "NumPy", "Matplotlib", "Research"],
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop"
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
+    link: "https://github.com/SubhashGuptha30/CVD_prediction_QIGWO"
   }];
   const skills = [{
     icon: <Code className="w-8 h-8" />,
@@ -259,26 +264,47 @@ const Index = () => {
             <p className="text-xl text-gray-300">Projects that showcase my passion for AI and development</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => <Card key={index} className="bg-gray-800 border-gray-700 overflow-hidden group hover:scale-105 transition-all duration-300">
-                <div className="relative">
-                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-cyan-400 flex items-center gap-2">
-                    {project.title}
-                    <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </CardTitle>
-                  <CardDescription className="text-gray-300">{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => <span key={techIndex} className="bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded-full text-sm">
-                        {tech}
-                      </span>)}
+            {projects.map((project, index) => {
+              const CardComponent = () => (
+                <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:scale-105 transition-all duration-300">
+                  <div className="relative">
+                    <img src={project.image} alt={project.title} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
                   </div>
-                </CardContent>
-              </Card>)}
+                  <CardHeader>
+                    <CardTitle className="text-cyan-400 flex items-center gap-2">
+                      {project.title}
+                      {project.link && <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />}
+                    </CardTitle>
+                    <CardDescription className="text-gray-300">{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech, techIndex) => <span key={techIndex} className="bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded-full text-sm">
+                          {tech}
+                        </span>)}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+
+              return project.link ? (
+                <a
+                  key={index}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-pointer"
+                  aria-label={`View ${project.title} on GitHub`}
+                >
+                  <CardComponent />
+                </a>
+              ) : (
+                <div key={index}>
+                  <CardComponent />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -371,4 +397,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
