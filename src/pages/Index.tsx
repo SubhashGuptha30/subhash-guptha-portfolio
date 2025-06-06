@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { sendEmail, EmailData } from '@/services/emailService';
+import PageStats from '@/components/PageStats';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -171,6 +172,12 @@ const Index = () => {
                   <span className="font-semibold">AI Developer</span>
                 </div>
               </div>
+              
+              {/* Page Statistics */}
+              <div className="py-2">
+                <PageStats />
+              </div>
+
               <p className="text-xl text-gray-300 leading-relaxed">
                 B.Tech AI student and tech enthusiast from Amrita Vishwa Vidyapeetham, 
                 passionate about building intelligent solutions and creating seamless user experiences.
