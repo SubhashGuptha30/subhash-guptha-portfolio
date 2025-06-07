@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { ArrowRight, Github, Linkedin, Mail, Phone, ExternalLink, Code, Brain, Database, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,8 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { sendEmail, EmailData } from '@/services/emailService';
-import PageStats from '@/components/PageStats';
-import Gallery from '@/components/Gallery';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,7 +22,7 @@ const Index = () => {
   useEffect(() => {
     setIsVisible(true);
     const handleScroll = () => {
-      const sections = ['home', 'about', 'portfolio', 'gallery', 'skills', 'contact'];
+      const sections = ['home', 'about', 'portfolio', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -156,7 +155,7 @@ const Index = () => {
           <div className="flex justify-between items-center">
             <div className="text-xl font-bold text-cyan-400">Subhash.dev</div>
             <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Portfolio', 'Gallery', 'Skills', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
+              {['Home', 'About', 'Portfolio', 'Skills', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
                   {item}
                 </button>)}
             </div>
@@ -179,11 +178,6 @@ const Index = () => {
                 <div className="bg-cyan-400 text-gray-900 px-4 py-2 rounded-full inline-block">
                   <span className="font-semibold">AI Developer</span>
                 </div>
-              </div>
-              
-              {/* Page Statistics */}
-              <div className="py-2">
-                <PageStats />
               </div>
 
               <p className="text-xl text-gray-300 leading-relaxed">
@@ -323,9 +317,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Gallery Section */}
-      <Gallery />
 
       {/* Skills Section */}
       <section id="skills" className="py-20 bg-gray-800">
