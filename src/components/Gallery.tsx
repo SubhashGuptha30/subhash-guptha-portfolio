@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface GalleryImage {
   id: number;
@@ -13,6 +14,7 @@ interface GalleryImage {
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [filter, setFilter] = useState('all');
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   // Sample gallery images - you can replace these with your actual photos
   const galleryImages: GalleryImage[] = [
@@ -59,6 +61,10 @@ const Gallery = () => {
   const filteredImages = filter === 'all' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === filter);
+
+  const handleImageLoad = (imageId: number) => {
+    setLoadedImages(prev => new Set([...prev, imageId]));
+  };
 
   const openLightbox = (imageId: number) => {
     setSelectedImage(imageId);
@@ -121,10 +127,16 @@ const Gallery = () => {
               onClick={() => openLightbox(image.id)}
             >
               <div className="relative overflow-hidden">
+                {!loadedImages.has(image.id) && (
+                  <Skeleton className="absolute inset-0 w-full h-64 bg-gray-700" />
+                )}
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className={`w-full h-64 object-cover transition-all duration-500 group-hover:scale-110 ${
+                    loadedImages.has(image.id) ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  onLoad={() => handleImageLoad(image.id)}
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-white text-center">
