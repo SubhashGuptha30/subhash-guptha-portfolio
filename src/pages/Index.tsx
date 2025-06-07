@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { sendEmail, EmailData } from '@/services/emailService';
 import PageStats from '@/components/PageStats';
+import Gallery from '@/components/Gallery';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,10 +19,11 @@ const Index = () => {
     subject: '',
     message: ''
   });
+  
   useEffect(() => {
     setIsVisible(true);
     const handleScroll = () => {
-      const sections = ['home', 'about', 'portfolio', 'skills', 'contact'];
+      const sections = ['home', 'about', 'portfolio', 'gallery', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -40,6 +42,7 @@ const Index = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -48,6 +51,7 @@ const Index = () => {
       });
     }
   };
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -58,6 +62,7 @@ const Index = () => {
       [name]: value
     }));
   };
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -99,6 +104,7 @@ const Index = () => {
       setIsSubmitting(false);
     }
   };
+  
   const projects = [{
     title: "Movie Streaming Website",
     description: "Full-stack application built with React, Node.js, and MongoDB for seamless movie streaming experience",
@@ -124,6 +130,7 @@ const Index = () => {
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
     link: "https://github.com/SubhashGuptha30/CVD_prediction_QIGWO"
   }];
+  
   const skills = [{
     icon: <Code className="w-8 h-8" />,
     title: "Frontend Development",
@@ -141,6 +148,7 @@ const Index = () => {
     title: "Full-Stack Development",
     description: "End-to-end application development with modern technologies and best practices"
   }];
+  
   return <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-800">
@@ -148,7 +156,7 @@ const Index = () => {
           <div className="flex justify-between items-center">
             <div className="text-xl font-bold text-cyan-400">Subhash.dev</div>
             <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Portfolio', 'Skills', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
+              {['Home', 'About', 'Portfolio', 'Gallery', 'Skills', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
                   {item}
                 </button>)}
             </div>
@@ -315,6 +323,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <Gallery />
 
       {/* Skills Section */}
       <section id="skills" className="py-20 bg-gray-800">
