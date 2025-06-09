@@ -21,7 +21,7 @@ const Index = () => {
   useEffect(() => {
     setIsVisible(true);
     const handleScroll = () => {
-      const sections = ['home', 'about', 'portfolio', 'skills', 'contact'];
+      const sections = ['home', 'about', 'portfolio', 'creative', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -129,6 +129,26 @@ const Index = () => {
     link: "https://github.com/SubhashGuptha30/CVD_prediction_QIGWO"
   }];
   
+  const creativeWorks = [{
+    title: "Vijayanath - A Warrior's Tale",
+    description: "An epic tale of courage and honor set in ancient times, exploring themes of duty and sacrifice.",
+    type: "Script",
+    image: "https://i.postimg.cc/3x5f1j6H/image.png",
+    link: null // You can add the link here later
+  }, {
+    title: "Reflections in Code",
+    description: "A collection of poems inspired by the intersection of technology and human emotion.",
+    type: "Poetry",
+    image: "https://i.postimg.cc/3x5f1j6H/image.png",
+    link: null // You can add the link here later
+  }, {
+    title: "Digital Dreams",
+    description: "A short story exploring the relationship between artificial intelligence and human consciousness.",
+    type: "Story",
+    image: "https://i.postimg.cc/3x5f1j6H/image.png",
+    link: null // You can add the link here later
+  }];
+  
   const skills = [{
     icon: <Code className="w-8 h-8" />,
     title: "Frontend Development",
@@ -154,7 +174,7 @@ const Index = () => {
           <div className="flex justify-between items-center">
             <div className="text-xl font-bold text-cyan-400">Subhash.dev</div>
             <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Portfolio', 'Skills', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
+              {['Home', 'About', 'Portfolio', 'Creative', 'Skills', 'Contact'].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`hover:text-cyan-400 transition-colors duration-300 ${activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'}`}>
                   {item}
                 </button>)}
             </div>
@@ -316,6 +336,71 @@ const Index = () => {
                 </a>
               ) : (
                 <div key={index}>
+                  <CardComponent />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Creative Section */}
+      <section id="creative" className="py-20 bg-gray-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Creative Gallery</h2>
+            <p className="text-xl text-gray-300">
+              A glimpse into my creative side out of the office
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {creativeWorks.map((work, index) => {
+              const CardComponent = () => (
+                <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <div className="relative">
+                    <img 
+                      src={work.image} 
+                      alt={work.title} 
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        {work.type}
+                      </span>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-cyan-400 flex items-center gap-2">
+                      {work.title}
+                      {work.link && <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />}
+                    </CardTitle>
+                    <CardDescription className="text-gray-300">
+                      {work.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              );
+
+              return work.link ? (
+                <a
+                  key={index}
+                  href={work.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-pointer"
+                  aria-label={`View ${work.title}`}
+                >
+                  <CardComponent />
+                </a>
+              ) : (
+                <div 
+                  key={index}
+                  onClick={() => {
+                    // Placeholder for future link functionality
+                    console.log(`Clicked on ${work.title} - link will be added later`);
+                  }}
+                >
                   <CardComponent />
                 </div>
               );
