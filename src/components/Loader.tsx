@@ -56,6 +56,7 @@ const Loader = ({ message = "Loading", showProgress = false }: LoaderProps) => {
           <div className="inline-block animate-bounce">
             <Rocket className="w-16 h-16 text-cyan-400 transform rotate-45" />
           </div>
+        </div>
           
         {/* Loading spinner */}
         <div className="relative mb-6">
