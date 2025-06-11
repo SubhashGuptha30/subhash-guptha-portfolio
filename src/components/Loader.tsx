@@ -69,7 +69,7 @@ const Loader = ({ message = "Loading", showProgress = false }: LoaderProps) => {
           <h2 className="text-2xl font-bold text-white mb-2">
             {message}{dots}
           </h2>
-          <p className="text-cyan-400">Get ready to explore</p>
+          <p className="text-cyan-400">Compiling the portfolio for you</p>
         </div>
 
         {/* Progress bar (if enabled) */}
