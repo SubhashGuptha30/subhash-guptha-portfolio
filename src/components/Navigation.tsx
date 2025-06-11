@@ -39,7 +39,7 @@ const Navigation = ({ activeSection, onSectionClick }: NavigationProps) => {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 bg-gray-800/95 rounded-lg border border-gray-700">
+          <div className="mt-4 bg-gray-800/95 rounded-lg border border-gray-700">
             {navItems.map((item, index) => (
               <div key={item}>
                 <button
