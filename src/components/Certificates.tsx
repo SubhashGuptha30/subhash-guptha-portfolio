@@ -68,7 +68,7 @@ const Certificates = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleZoomOut}
-                className="border-gray-600 text-gray-300 hover:text-cyan-400"
+                className="bg-transparent border-gray-600 text-gray-300 hover:text-cyan-400"
                 disabled={zoomLevel <= 0.5}
               >
                 <ZoomOut className="h-4 w-4" />
@@ -77,7 +77,7 @@ const Certificates = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleZoomIn}
-                className="border-gray-600 text-gray-300 hover:text-cyan-400"
+                className="bg-transparent border-gray-600 text-gray-300 hover:text-cyan-400"
                 disabled={zoomLevel >= 3}
               >
                 <ZoomIn className="h-4 w-4" />
@@ -86,7 +86,7 @@ const Certificates = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleClose}
-                className="border-gray-600 text-gray-300 hover:text-red-400"
+                className="bg-transparent border-gray-600 text-gray-300 hover:text-red-400"
               >
                 <X className="h-4 w-4" />
               </Button>
