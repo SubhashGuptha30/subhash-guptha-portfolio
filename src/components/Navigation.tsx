@@ -26,23 +26,8 @@ const Navigation = ({ activeSection, onSectionClick }: NavigationProps) => {
         <div className="flex justify-between items-center">
           <div className="text-xl font-bold text-cyan-400">Subhash.dev</div>
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map(item => (
-              <button 
-                key={item} 
-                onClick={() => onSectionClick(item.toLowerCase())} 
-                className={`hover:text-cyan-400 transition-colors duration-300 ${
-                  activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Menu Button */}
+          <div>
             <button
               onClick={handleMenuToggle}
               className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
@@ -52,9 +37,9 @@ const Navigation = ({ activeSection, onSectionClick }: NavigationProps) => {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 bg-gray-800/95 rounded-lg border border-gray-700">
+          <div className="mt-4 bg-gray-800/95 rounded-lg border border-gray-700">
             {navItems.map((item, index) => (
               <div key={item}>
                 <button
