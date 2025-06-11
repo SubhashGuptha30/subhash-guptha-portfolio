@@ -68,27 +68,27 @@ const Certificates = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleZoomOut}
-                className="bg-transparent border-gray-600 text-gray-900 hover:text-cyan-400"
+                className="bg-gray-800 border-gray-600 hover:bg-gray-700"
                 disabled={zoomLevel <= 0.5}
               >
-                <ZoomOut className="h-2 w-2" />
+                <ZoomOut className="h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={handleZoomIn}
-                className="bg-transparent border-gray-600 text-gray-900 hover:text-cyan-400"
+                className="bg-gray-800 border-gray-600 hover:bg-gray-700"
                 disabled={zoomLevel >= 3}
               >
-                <ZoomIn className="h-2 w-2" />
+                <ZoomIn className="h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={handleClose}
-                className="bg-transparent border-gray-600 text-gray-900 hover:text-red-400"
+                className="bg-gray-800 border-gray-600 hover:bg-gray-700"
               >
-                <X className="h-2 w-2" />
+                <X className="h-4 w-4" />
               </Button>
             </div>
             
