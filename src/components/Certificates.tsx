@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { ZoomIn, ZoomOut } from 'lucide-react';
+import { X, ZoomIn, ZoomOut } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -68,19 +68,27 @@ const Certificates = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleZoomOut}
-                className="h-2 w-2 bg-gray-800 border-gray-600 hover:bg-gray-700"
+                className="bg-gray-800 border-gray-600 hover:bg-gray-700"
                 disabled={zoomLevel <= 0.5}
               >
-                <ZoomOut/>
+                <ZoomOut className="h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
                 size="icon"
                 onClick={handleZoomIn}
-                className="h-2 w-2 bg-gray-800 border-gray-600 hover:bg-gray-700"
+                className="bg-gray-800 border-gray-600 hover:bg-gray-700"
                 disabled={zoomLevel >= 3}
               >
-                <ZoomIn/>
+                <ZoomIn className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleClose}
+                className="bg-gray-800 border-gray-600 hover:bg-gray-700"
+              >
+                <X className="h-4 w-4" />
               </Button>
             </div>
             
