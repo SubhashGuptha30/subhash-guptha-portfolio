@@ -4,8 +4,9 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Portfolio from '@/components/Portfolio';
-import Creative from '@/components/Creative';
 import Skills from '@/components/Skills';
+import Certificates from '@/components/Certificates';
+import Creative from '@/components/Creative';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -14,7 +15,7 @@ const Index = () => {
   
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'portfolio', 'creative', 'skills', 'contact'];
+      const sections = ['home', 'about', 'portfolio', 'skills', 'certificates', 'creative', 'contact'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -44,8 +45,9 @@ const Index = () => {
       <Hero onSectionClick={scrollToSection} />
       <About />
       <Portfolio />
-      <Creative />
       <Skills />
+      <Certificates />
+      <Creative />
       <Contact />
       <Footer />
     </div>
