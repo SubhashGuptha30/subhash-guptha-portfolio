@@ -36,7 +36,7 @@ const Certificates = () => {
           <p className="text-xl text-gray-300">My professional certifications and achievements</p>
         </div>
         
-        <div className="overflow-x-auto pb-4">
+        <div className="overflow-x-auto scrollbar-hide pb-4">
           <div className="flex space-x-6 min-w-max">
             {certificates.map((certificate) => (
               <Card 
