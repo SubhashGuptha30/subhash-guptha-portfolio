@@ -15,7 +15,7 @@ const Hero = ({ onSectionClick }: HeroProps) => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden  py-20 lg:py-0 px-6">
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 to-blue-900/20"></div>
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -24,7 +24,7 @@ const Hero = ({ onSectionClick }: HeroProps) => {
               <p className="text-cyan-400 text-lg">Hello, I'm</p>
               <h1 className="text-5xl lg:text-7xl font-bold">
                 Subhash
-                <span className="block text-cyan-400">Guptha →</span>
+                <span className="text-cyan-400">Guptha →</span>
               </h1>
               <div className="bg-cyan-400 text-gray-900 px-4 py-2 rounded-full inline-block">
                 <span className="font-semibold">AI Developer</span>
@@ -65,7 +65,7 @@ const Hero = ({ onSectionClick }: HeroProps) => {
                   />
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 bg-cyan-400 text-gray-900 px-4 py-2 rounded-full font-semibold transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-lg group-hover:shadow-cyan-400/50">
+              <div className="absolute -top-4 -right-4 bg-cyan-400 text-gray-900 px-4 py-2 rounded-full font-semibold transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-400/50">
                 3rd Year B.Tech
               </div>
             </div>

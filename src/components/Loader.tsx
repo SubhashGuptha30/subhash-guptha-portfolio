@@ -22,7 +22,7 @@ const Loader = ({ message = "Loading", showProgress = false }: LoaderProps) => {
     if (showProgress) {
       progressInterval = setInterval(() => {
         setProgress(prev => prev >= 100 ? 100 : prev + 2);
-      }, 50);
+      }, 90);
     }
 
     return () => {
@@ -57,12 +57,6 @@ const Loader = ({ message = "Loading", showProgress = false }: LoaderProps) => {
             <Rocket className="w-16 h-16 text-cyan-400 transform rotate-45" />
           </div>
           
-          {/* Rocket trail effect */}
-          <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
-            <Stars className="w-8 h-8 text-yellow-400 animate-pulse" />
-          </div>
-        </div>
-
         {/* Loading spinner */}
         <div className="relative mb-6">
           <div className="w-16 h-16 mx-auto border-4 border-slate-700 border-t-cyan-400 rounded-full animate-spin"></div>
