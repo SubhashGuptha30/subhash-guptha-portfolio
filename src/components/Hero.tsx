@@ -24,7 +24,7 @@ const Hero = ({ onSectionClick }: HeroProps) => {
               <p className="text-cyan-400 text-lg">Hello, I'm</p>
               <h1 className="text-5xl lg:text-7xl font-bold">
                 Subhash
-                <span className="text-cyan-400">Guptha →</span>
+                <span className="text-cyan-400 px-2 lg:px-4">Guptha</span>
               </h1>
               <div className="bg-cyan-400 text-gray-900 px-4 py-2 rounded-full inline-block">
                 <span className="font-semibold">AI Developer</span>
