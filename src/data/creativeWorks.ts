@@ -4,7 +4,7 @@ export const creativeWorks = [
     title: "Vijayanath - A Warrior's Tale",
     description: "An epic tale of courage and honor set in ancient times, exploring themes of duty and sacrifice.",
     type: "Script",
-    image: "/uploads/vijayanath.jpg",
+    image: "/uploads/creative-work-1.png",
     link: "https://docs.google.com/document/d/1OOodgSuOLy_qk2aNxi7Zj4rZyP6UUpA-E4F91JYyqyM/edit?usp=sharing",
   },
   {
