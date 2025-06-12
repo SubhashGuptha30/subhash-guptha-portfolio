@@ -5,7 +5,7 @@ import { creativeWorks } from '@/data/creativeWorks';
 
 const Creative = () => {
   return (
-    <section id="creative" className="py-20 bg-gray-900">
+    <section id="creative" className="py-20 bg-gray-800">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Creative Gallery</h2>
