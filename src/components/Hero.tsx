@@ -58,7 +58,7 @@ const Hero = ({ onSectionClick }: HeroProps) => {
                   <img 
                     alt="Subhash Guptha" 
                     className="w-72 h-72 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110" 
-                    src="/lovable-uploads/519c0e2b-b038-4a33-abb9-9bfa8731c5aa.jpg"
+                    src="/uploads/519c0e2b-b038-4a33-abb9-9bfa8731c5aa.jpg"
                     style={{
                       transform: 'translateZ(20px)'
                     }}
